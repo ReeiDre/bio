@@ -10,9 +10,10 @@ body {
     display: flex;
     justify-content: center;
     min-height: 100vh;
-    background-color: #1a1a1a; /* Fondo de respaldo */
+    background-color: #1a1a1a;
 }
 
+/* Fondo de Video */
 #bg-video {
     position: fixed;
     top: 0;
@@ -26,52 +27,82 @@ body {
 
 .container {
     width: 100%;
-    max-width: 400px; /* Limita el ancho de todo el contenido */
+    max-width: 400px;
     text-align: center;
-    padding: 40px 20px;
+    padding: 60px 20px; /* Más espacio arriba y abajo */
 }
 
+/* Encabezado con más separación */
 .profile-pic {
     width: 90px;
     height: 90px;
     border-radius: 50%;
     object-fit: cover;
     border: 2px solid rgba(255,255,255,0.2);
-    margin-bottom: 10px;
+    margin-bottom: 15px; /* Espacio bajo la foto */
 }
 
-/* ARREGLO DEL CARRUSEL */
+h1 { 
+    font-size: 1.4rem; 
+    margin-bottom: 10px; /* Espacio bajo el nombre */
+    letter-spacing: 0.5px;
+}
+
+.description { 
+    font-size: 0.9rem; 
+    opacity: 0.7; 
+    margin-bottom: 40px; /* Espacio grande antes del carrusel */
+}
+
+/* CARRUSEL CON BARRA VISIBLE */
 .carousel-container {
     width: 100%;
-    overflow: hidden; /* Corta lo que sobresalga */
-    margin-bottom: 25px;
+    margin-bottom: 40px; /* Espacio antes de los botones */
 }
 
 .carousel-track {
     display: flex;
     overflow-x: auto;
-    gap: 12px;
-    padding-bottom: 15px;
+    gap: 15px;
+    padding-bottom: 15px; /* Espacio para que la barra no toque las fotos */
     scroll-snap-type: x mandatory;
-    scrollbar-width: none; /* Esconde scroll en Firefox */
+    
+    /* Configuración de la barrita para Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.4) rgba(255, 255, 255, 0.1);
 }
 
-.carousel-track::-webkit-scrollbar { display: none; } /* Esconde scroll en Chrome/Safari */
+/* Configuración de la barrita para Chrome, Safari y Edge */
+.carousel-track::-webkit-scrollbar {
+    height: 4px; /* Grosor de la barra */
+    display: block; /* Asegura que se vea */
+}
+
+.carousel-track::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.carousel-track::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+}
 
 .carousel-img {
-    height: 180px; /* Altura controlada */
-    width: 140px;  /* Ancho controlado */
-    border-radius: 12px;
+    height: 200px;
+    width: 150px;
+    border-radius: 16px;
     flex: 0 0 auto;
     object-fit: cover;
     scroll-snap-align: start;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 
-/* BOTONES */
+/* BOTONES REDES SOCIALES */
 .links {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 14px;
 }
 
 .link-card {
@@ -79,16 +110,20 @@ body {
     color: black;
     text-decoration: none;
     padding: 16px;
-    border-radius: 12px;
+    border-radius: 14px;
     font-weight: 600;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    transition: 0.3s ease;
+    transition: all 0.3s ease;
 }
 
-.link-card:hover { transform: scale(1.02); background: #f0f0f0; }
+.link-card:hover { 
+    transform: translateY(-2px); 
+    background: #f8f8f8; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
 
 /* ANIMACIONES */
 @keyframes fadeInUp {
@@ -98,7 +133,7 @@ body {
 
 header, .carousel-container, .link-card {
     opacity: 0;
-    animation: fadeInUp 0.6s ease-out forwards;
+    animation: fadeInUp 0.8s ease-out forwards;
 }
 
 header { animation-delay: 0.1s; }
